@@ -7,9 +7,10 @@ using System;
 
 public class Frontline_Manager : MonoBehaviour
 {
-
+    public TextAsset textJSON;
+    public MissionList missionList = new MissionList();
     public GameObject Player;
-    public GameObject playerScoreObject, GameOverObject;
+    public GameObject playerScoreObject, GameOverObject, MissionTitleObject, MissionTextObject;
     
     public float moveSpeed;
     public int Health, maxScore;
@@ -23,8 +24,11 @@ public class Frontline_Manager : MonoBehaviour
     private int missionCount = 1;
     private UnityEngine.UI.Text playerScore;
     private UnityEngine.UI.Text GameOverText;
+    private UnityEngine.UI.Text MissionTitle;
+    private UnityEngine.UI.Text MissionMessage;
     private int intPlayerScore = 0;
-
+    private int i = 1;
+    private int activeMission = 0;
     Ambulance_Controller PController;
     public GameObject Collider1, Collider2, Collider3, Collider4, Collider5, Collider6, Collider7, Collider8, Collider9, Collider10, Collider11, Collider12;
     public Collisions C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12; 
@@ -33,11 +37,15 @@ public class Frontline_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        missionList = JsonUtility.FromJson<MissionList>(textJSON.text);
         //Implementation of Story from JSON needs implementing.
         PController = Player.GetComponent<Ambulance_Controller>();
         playerScore = playerScoreObject.GetComponent<UnityEngine.UI.Text>();
         GameOverText = GameOverObject.GetComponent<UnityEngine.UI.Text>();
+        MissionTitle = MissionTitleObject.GetComponent<UnityEngine.UI.Text>();
+        MissionMessage = MissionTextObject.GetComponent<UnityEngine.UI.Text>();
         
+        missionCount = (missionList.mission.Length);
         
         loadMission();
 
@@ -81,40 +89,87 @@ public class Frontline_Manager : MonoBehaviour
     }
     public void reachedMission(Collision2D other)
     {
+        Debug.Log(missionList.mission.Length);
+
         Debug.Log("Object Collectable and is Checkpoint");
         other.gameObject.transform.Translate(0.0f, 50.0f, 0.0f);
         intPlayerScore += other.gameObject.GetComponent<Collisions>().points;
         playerScore.text = Convert.ToString(intPlayerScore);
         Debug.Log(playerScore);
-        missionCount += 1;
+        i += 1;
+        activeMission += 1;
         moveSpeed += 1.5f;
-        loadMission();
-        if(missionCount == 6) missionCount = 0;
+        Debug.Log(activeMission);
+        if(i == 6) i = 1;
+        if (activeMission < missionList.mission.Length) loadMission(); else activeMission = 1;
     }
-
+    IEnumerator inTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        MissionTitle.text = null;
+        MissionMessage.text = null;
+    }
     public void loadMission()
     {
         Debug.Log("LOADING MISSION !");
-        switch (missionCount)
+        switch (i)
         {
             case 1:
                 Collider1.transform.position = new Vector3(-15.61f, 11.92f, -1.0f);
+                MissionTitle.text = missionList.mission[activeMission].name;
+                MissionMessage.text = missionList.mission[activeMission].missionText;
+                StartCoroutine(inTime(4));
+
                 break;
             case 2:
                 Collider2.transform.position = new Vector3(15.89f, -7.45f, -1.0f);
+                MissionTitle.text = missionList.mission[activeMission].name;
+                MissionMessage.text = missionList.mission[activeMission].missionText;
+                StartCoroutine(inTime(4));
                 break;
             case 3:
                 Collider3.transform.position = new Vector3(15.89f, -7.45f, -1.0f);
+                MissionTitle.text = missionList.mission[activeMission].name;
+                MissionMessage.text = missionList.mission[activeMission].missionText;
+                StartCoroutine(inTime(6));
                 break;
             case 4:
                 Collider4.transform.position = new Vector3(0f, 0f, -1.0f);
+                MissionTitle.text = missionList.mission[activeMission].name;
+                MissionMessage.text = missionList.mission[activeMission].missionText;
+                StartCoroutine(inTime(8));
                 break;
             case 5:
                 Collider5.transform.position = new Vector3(15.89f, -7.45f, -1.0f);
+                MissionTitle.text = missionList.mission[activeMission].name;
+                MissionMessage.text = missionList.mission[activeMission].missionText;
+                StartCoroutine(inTime(10));
                 break;
             case 6:
                 Collider6.transform.position = new Vector3(0f, 0f, -1.0f);
+                MissionTitle.text = missionList.mission[activeMission].name;
+                MissionMessage.text = missionList.mission[activeMission].missionText;
+                StartCoroutine(inTime(10));
                 break;
         }
     }
+
+        [System.Serializable]
+    public class Mission
+    {
+        public string name;
+        public string missionText;
+
+        public int damage;
+        public int durability;
+        public int time;
+        public int points;
+    }
+
+    [System.Serializable]
+    public class MissionList
+    {
+        public Mission[] mission;
+    }
+
 }

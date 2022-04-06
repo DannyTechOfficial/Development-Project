@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Collidable
   - Score
+  - MissionText
+  - MissionTitle
   layers:
   - Default
   - TransparentFX
