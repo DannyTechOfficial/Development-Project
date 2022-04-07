@@ -18,6 +18,7 @@ public class Ambulance_Controller : MonoBehaviour
     private const string UP = "up";
     private const string DOWN = "down";
     Frontline_Manager fManager;
+    [SerializeField] private Animator AmbulanceAnimationController;
 
 
     string buttonPressed;
@@ -76,6 +77,15 @@ public class Ambulance_Controller : MonoBehaviour
             rb2d.SetRotation(180);
             rb2d.velocity = new Vector2(0, -moveSpeed);
             
+        }
+
+        if(rb2d.velocity != new Vector2(0, 0))
+        {
+            AmbulanceAnimationController.SetBool("Moving", true);
+        }
+        else if(rb2d.velocity == new Vector2(0, 0))
+        {
+            AmbulanceAnimationController.SetBool("Moving", false);
         }
         
         if(fManager.Health <= 0)

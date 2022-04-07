@@ -11560,6 +11560,7 @@ GameObject:
   - component: {fileID: 559547421}
   - component: {fileID: 559547420}
   - component: {fileID: 559547424}
+  - component: {fileID: 559547425}
   m_Layer: 6
   m_Name: Ambulance
   m_TagString: Player
@@ -11606,7 +11607,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.64, y: 1.28}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.64, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -11654,12 +11655,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b5ab8b110550af3409c4406c41905802, type: 3}
+  m_Sprite: {fileID: 7228863091746211501, guid: bdf50710ee3cea848ab6755ba870f922, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.64, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -11695,6 +11696,26 @@ MonoBehaviour:
   moveSpeed: 0
   health: 0
   dead: 0
+  AmbulanceAnimationController: {fileID: 559547425}
+--- !u!95 &559547425
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559547419}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0aeec86e9c8bbc54d871c365a34bef3b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &622150240
 GameObject:
   m_ObjectHideFlags: 0
@@ -13440,7 +13461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -57.91, y: 26.04}
+  m_AnchoredPosition: {x: -57.74, y: 26.23}
   m_SizeDelta: {x: 1.28, y: 1.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1780804237
