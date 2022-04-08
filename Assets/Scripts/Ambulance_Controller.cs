@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class Ambulance_Controller : MonoBehaviour
 {
     Rigidbody2D rb2d;
+    AudioSource Sound;
+    Animator Animate;
+    public AudioClip Idle, Moving;
     public GameObject Manager;
     public float moveSpeed;
     public int health;
@@ -28,6 +31,8 @@ public class Ambulance_Controller : MonoBehaviour
     {
         fManager = Manager.GetComponent<Frontline_Manager>();
         rb2d = GetComponent<Rigidbody2D>();
+        Sound = GetComponent<AudioSource>();
+        Animate = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -82,10 +87,14 @@ public class Ambulance_Controller : MonoBehaviour
         if(rb2d.velocity != new Vector2(0, 0))
         {
             AmbulanceAnimationController.SetBool("Moving", true);
+            Animate.Play("AmbulanceOnCall");
+            Debug.Log("Code CHECK");
         }
         else if(rb2d.velocity == new Vector2(0, 0))
         {
             AmbulanceAnimationController.SetBool("Moving", false);
+            Animate.Play("AmbulanceIdle");
+            Debug.Log("Code CHECK2");
         }
         
         if(fManager.Health <= 0)
@@ -97,8 +106,20 @@ public class Ambulance_Controller : MonoBehaviour
             fManager.isDead = false;
         }
     }
-    private void OnCollisionEnter2D(Collision2D other) 
+
+    private void onIdle()
     {
+        Sound.clip = Idle;
+        Sound.Play();
+    }
+    private void onMoving()
+    {
+        Sound.clip = Moving;
+        Sound.Play();
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Collission");
         if (other.gameObject.tag == "Collidable")
         {
             if ((other.gameObject.GetComponent<Collisions>()).Damage > 0)

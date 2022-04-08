@@ -90,7 +90,7 @@ public class Frontline_Manager : MonoBehaviour
             GameOverText.text = "You Crashed The Ambulance ! - Press ESC to go to menu.";
         }
     }
-    public void reachedMission(Collision2D other)
+    public void reachedMission(Collider2D other)
     {
         Debug.Log(missionList.mission.Length);
 
