@@ -7,6 +7,8 @@ public class WaypointMover : MonoBehaviour
     //Stores reference to WaypointSystem
     [SerializeField] private Waypoints waypoints;
     [SerializeField] private Rigidbody2D rb2d;
+    [SerializeField] private Frontline_Manager fManager;
+    [SerializeField] private float multiplierSpeed = 5f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private bool directionLeft, directionRight;
     [SerializeField] private float distanceThreshold = 0.1f;
@@ -27,7 +29,8 @@ public class WaypointMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.position, moveSpeed * Time.deltaTime);
+        multiplierSpeed = fManager.multiplierSpeed;
+        transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.position, moveSpeed * multiplierSpeed * Time.deltaTime);
         if (Vector3.Distance(transform.position, currentWaypoint.position) < distanceThreshold)
         {
             Debug.Log("Checkpoint 1");

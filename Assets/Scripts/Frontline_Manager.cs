@@ -13,9 +13,9 @@ public class Frontline_Manager : MonoBehaviour
     public MissionList missionList = new MissionList();
     public GameObject Player;
     public GameObject playerScoreObject, GameOverObject, MissionTitleObject, MissionTextObject;
-    
-    public float moveSpeed;
-    public int Health, maxScore;
+    public float moveSpeed, multiplierSpeed;
+
+    public int Health, maxHealth, maxScore;
     public bool isDead;
     public int Difficulty;
 
@@ -40,6 +40,7 @@ public class Frontline_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Health = maxHealth;
         missionList = JsonUtility.FromJson<MissionList>(textJSON.text);
         //Implementation of Story from JSON needs implementing.
         PController = Player.GetComponent<Ambulance_Controller>();
@@ -75,7 +76,6 @@ public class Frontline_Manager : MonoBehaviour
         PController.moveSpeed = moveSpeed;
         PController.health = Health;
         PController.dead = isDead;
-
         if (Convert.ToInt32(playerScore.text) >= maxScore)
         {
             GameOverText.text = "Your reached the Max Score !   -   Well Done ! !";
@@ -90,6 +90,7 @@ public class Frontline_Manager : MonoBehaviour
             GameOverText.text = "You Crashed The Ambulance ! - Press ESC to go to menu.";
         }
     }
+
     public void reachedMission(Collider2D other)
     {
         Debug.Log(missionList.mission.Length);
@@ -115,6 +116,9 @@ public class Frontline_Manager : MonoBehaviour
     {
         Debug.Log("LOADING MISSION !");
         randomNumber = Random.Range(1,13);
+
+        multiplierSpeed =  missionList.mission[activeMission].difficulty;
+
         if(int.Parse(playerScore.text) < maxScore)
         {
             
@@ -205,8 +209,7 @@ public class Frontline_Manager : MonoBehaviour
         public string missionText;
 
         public int damage;
-        public int durability;
-        public int time;
+        public int difficulty;
         public int points;
     }
 

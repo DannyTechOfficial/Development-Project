@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Ambulance_Controller : MonoBehaviour
     Rigidbody2D rb2d;
     AudioSource Sound;
     Animator Animate;
+    public static event Action onPlayerHit;
     public AudioClip Idle, Moving;
     public GameObject Manager;
     public float moveSpeed;
@@ -88,13 +90,11 @@ public class Ambulance_Controller : MonoBehaviour
         {
             AmbulanceAnimationController.SetBool("Moving", true);
             Animate.Play("AmbulanceOnCall");
-            Debug.Log("Code CHECK");
         }
         else if(rb2d.velocity == new Vector2(0, 0))
         {
             AmbulanceAnimationController.SetBool("Moving", false);
             Animate.Play("AmbulanceIdle");
-            Debug.Log("Code CHECK2");
         }
         
         if(fManager.Health <= 0)
@@ -125,6 +125,7 @@ public class Ambulance_Controller : MonoBehaviour
             if ((other.gameObject.GetComponent<Collisions>()).Damage > 0)
             {
                 fManager.Health -= (other.gameObject.GetComponent<Collisions>().Damage);
+                onPlayerHit?.Invoke();
                 Debug.Log("Ambulance Crashed! - Health: " + health);
                 if (fManager.Health <= 0)
                 {
