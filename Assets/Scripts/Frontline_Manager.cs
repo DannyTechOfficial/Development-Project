@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using Random=UnityEngine.Random;
+using UnityEngine.AddressableAssets;
 
 
 using System;
 
 public class Frontline_Manager : MonoBehaviour
 {
-    public TextAsset textJSON;
+    //public TextAsset textJSON;
     public MissionList missionList = new MissionList();
     public GameObject Player;
     public GameObject playerScoreObject, GameOverObject, MissionTitleObject, MissionTextObject;
@@ -32,16 +34,32 @@ public class Frontline_Manager : MonoBehaviour
     private int i = 1;
     private int activeMission = 0;
     private int randomNumber;
+    private string text, data;
     Ambulance_Controller PController;
     public GameObject Collider1, Collider2, Collider3, Collider4, Collider5, Collider6, Collider7, Collider8, Collider9, Collider10, Collider11, Collider12;
     public Collisions C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12; 
         
-
     // Start is called before the first frame update
     void Start()
     {
+        DirectoryInfo directoryInfo = new DirectoryInfo(Application.streamingAssetsPath);
+        print("Streaming Assets Path: " + Application.streamingAssetsPath);
+        FileInfo[] allFiles = directoryInfo.GetFiles("*.*");
+        foreach (FileInfo file in allFiles)
+        {
+            if (file.Name.Contains("Missions"))
+            {
+                if (file.Name == "Missions.json.meta") break;
+                Debug.Log("MISSIONS FOUND !!!");
+                data = LoadJSONFile(file).ToString();
+                Debug.Log(file.Directory.ToString() + "/" + file.Name);
+                string dataAsJSON = File.ReadAllText(file.Directory.ToString() +"/" + file.Name);
+                missionList = JsonUtility.FromJson<MissionList>(dataAsJSON);
+                Debug.Log(missionList.mission[0]);
+            }
+        }
         Health = maxHealth;
-        missionList = JsonUtility.FromJson<MissionList>(textJSON.text);
+        //missionList = JsonUtility.FromJson<MissionList>(textJSON.text);
         //Implementation of Story from JSON needs implementing.
         PController = Player.GetComponent<Ambulance_Controller>();
         playerScore = playerScoreObject.GetComponent<UnityEngine.UI.Text>();
@@ -69,6 +87,14 @@ public class Frontline_Manager : MonoBehaviour
         
         
     }
+    IEnumerator LoadJSONFile(FileInfo file)
+    {
+        string wwwColourPath = "file://" + file.FullName.ToString();
+        WWW www = new WWW(wwwColourPath);
+        missionList = JsonUtility.FromJson<MissionList>(www.text);
+        yield return www;
+        Debug.Log(missionList.mission[0]);
+    }
 
     // Update is called once per frame
     void Update()
@@ -93,17 +119,12 @@ public class Frontline_Manager : MonoBehaviour
 
     public void reachedMission(Collider2D other)
     {
-        Debug.Log(missionList.mission.Length);
-
-        Debug.Log("Object Collectable and is Checkpoint");
         other.gameObject.transform.Translate(0.0f, 50.0f, 0.0f);
         intPlayerScore += other.gameObject.GetComponent<Collisions>().points;
         playerScore.text = Convert.ToString(intPlayerScore);
-        Debug.Log(playerScore);
         i += 1;
         activeMission += 1;
         //moveSpeed += 1.5f;
-        Debug.Log(activeMission);
         if (activeMission < missionList.mission.Length) loadMission(); else {activeMission = 0; loadMission();}
     }
     IEnumerator inTime(float time)

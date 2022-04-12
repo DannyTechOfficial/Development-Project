@@ -43,8 +43,9 @@
      <Compile Include="Assets\Scripts\Ambulance_Controller.cs" />
      <Compile Include="Assets\Scripts\Frontline_Reader.cs" />
      <Compile Include="Assets\Scripts\Button_Start.cs" />
-     <Compile Include="Assets\Scripts\HealthHeart.cs" />
      <Compile Include="Assets\Scripts\HealthBar.cs" />
+     <Compile Include="Assets\Scripts\HealthHeart.cs" />
+     <Compile Include="Assets\Scripts\addressableManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -710,6 +711,24 @@
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
         <HintPath>D:/University/Year 3/Development Project/Project/Student&apos;s Cartridge/Development/Code/Frontline/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables">
+        <HintPath>D:/University/Year 3/Development Project/Project/Student&apos;s Cartridge/Development/Code/Frontline/Library/ScriptAssemblies/Unity.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables.Editor">
+        <HintPath>D:/University/Year 3/Development Project/Project/Student&apos;s Cartridge/Development/Code/Frontline/Library/ScriptAssemblies/Unity.Addressables.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.CacheServer">
+        <HintPath>D:/University/Year 3/Development Project/Project/Student&apos;s Cartridge/Development/Code/Frontline/Library/ScriptAssemblies/UnityEditor.CacheServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+        <HintPath>D:/University/Year 3/Development Project/Project/Student&apos;s Cartridge/Development/Code/Frontline/Library/ScriptAssemblies/Unity.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline">
+        <HintPath>D:/University/Year 3/Development Project/Project/Student&apos;s Cartridge/Development/Code/Frontline/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline.Editor">
+        <HintPath>D:/University/Year 3/Development Project/Project/Student&apos;s Cartridge/Development/Code/Frontline/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

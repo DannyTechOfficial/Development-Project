@@ -13222,6 +13222,7 @@ GameObject:
   - component: {fileID: 1398446201}
   - component: {fileID: 1398446200}
   - component: {fileID: 1398446199}
+  - component: {fileID: 1398446203}
   m_Layer: 6
   m_Name: Obstacle5
   m_TagString: Collidable
@@ -13338,6 +13339,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1398446203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398446198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17f9e8ae05bb484ab15a54ff728325a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionReference:
+    m_AssetGUID: 33b92ca3b663cee44b879f3f8200b4d7
+    m_SubObjectName: 
+    m_SubObjectType: 
+  textureReference:
+    m_AssetGUID: cdd6f1e51045b61499be7c7b394976d6
+    m_SubObjectName: YellowCar
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1407241451
 GameObject:
   m_ObjectHideFlags: 0
@@ -13613,7 +13635,7 @@ PrefabInstance:
     - target: {fileID: 6921378036062766354, guid: 73c570dfcb068124484e15b5d03741c6, type: 3}
       propertyPath: textJSON
       value: 
-      objectReference: {fileID: 4900000, guid: 33b92ca3b663cee44b879f3f8200b4d7, type: 3}
+      objectReference: {fileID: 4900000, guid: 681a87b65494e7845a1d6332933b0fa7, type: 3}
     - target: {fileID: 6921378036062766354, guid: 73c570dfcb068124484e15b5d03741c6, type: 3}
       propertyPath: Collider1
       value: 

@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Assets
+  m_EditorClassIdentifier: 
+  m_GroupName: Assets
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 777423b8fcc876f4f8e64841329da5e5
+  m_SerializeEntries:
+  - m_GUID: 33b92ca3b663cee44b879f3f8200b4d7
+    m_Address: Assets/StreamingAssets/Missions.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: cdd6f1e51045b61499be7c7b394976d6
+    m_Address: Assets/Textures/YellowCar.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7c5c9c9583d200d4480e78ee63818fb2
+    m_Address: Assets/Textures/Health.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 6c68faa25f5c8424bb542ccf80bbd019
+    m_Address: Assets/Textures/GoldCoin.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 780d724a3699c5544b8ba69d6a6db76b
+    m_Address: Assets/Textures/HouseRoof.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 55b17708ff282d94d90f257ccab408fb
+    m_Address: Assets/Textures/Tarmat.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: a672c81281b56f84bbf7bbfb766f56e6
+    m_Address: Assets/Textures/Tarmat Padestrian Crossing.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: d22369817853f37439398c7a4bf05bce
+    m_Address: Assets/Textures/Tarmat LaneVerticle.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: cc0f19e3005404d4c861b6f1a5e6a495
+    m_Address: Assets/Textures/Tarmat LaneHorizontal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 07f508040bf775d488f56fcaa886809f
+    m_Address: Assets/Textures/Tarmat Junction.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 1a412eb2a8517cb4c803eecd0862b35d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 488ad6b61b7d5724490870c880cc4dba, type: 2}
+    - {fileID: 11400000, guid: 92b9ff9f259ad354ab42e409c147cf4d, type: 2}

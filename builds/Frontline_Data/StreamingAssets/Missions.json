@@ -1,0 +1,85 @@
+{
+    "mission": [
+        {
+            "name": "Example Editor Of Missions !",
+            "missionText": "Help me I am commit die!!",
+            "damage": 0,
+            "difficulty": 2,
+            "points": 50
+
+        },
+        {
+            "name": "What an Idiot",
+            "missionText": "Help me I am stuck in a fence!!",
+            "damage": 0,
+            "difficulty": 2.5,
+            "points": 10
+
+        },
+        {
+            "name": "At least you didn't walk under it",
+            "missionText": "Help me I fell off a ladder!!",
+            "damage": 0,
+            "difficulty": 3,
+            "points": 70
+
+        },
+        {
+            "name": "7th sense?",
+            "missionText": "Help me I am seeing dead people!!",
+            "damage": 0,
+            "difficulty": 3.5,
+            "points": 120
+
+        },
+        {
+            "name": "Smells like almonds...",
+            "missionText": "Help me I am poisoned with cyanide!!",
+            "damage": 0,
+            "difficulty": 4,
+            "points": 130
+
+        },
+        {
+            "name": "Please be quiet",
+            "missionText": "AAAAAAAAAAAAAAGGGGGGGGGGGGGHHHHHHHHH!!!!!!!!!!!!!!",
+            "damage": 0,
+            "difficulty": 4.5,
+            "points": 0
+
+        },
+        {
+            "name": "Mission 69",
+            "missionText": "Help I have Ligma",
+            "damage": 0,
+            "difficulty": 5,
+            "points": 10
+
+        },
+        {
+            "name": "01001101 01101001 01110011 01110011 01101001 01101111 01101110 00100000 00111000",
+            "missionText": "01001000 01100101 01101100 01110000 00100000 01001101 01100101",
+            "damage": 0,
+            "difficulty": 5.5,
+            "points": 80
+
+        },
+        {
+            "name": "Metal Gear",
+            "missionText": "Snake? SNAKE? SNAAAAAAAAAAAAKKKEEEE!!!!",
+            "damage": 0,
+            "difficulty": 6,
+            "points": 60
+
+        },
+        {
+            "name": "Obscure movie reference",
+            "missionText": "AGGHH ive eaten Soylent Green",
+            "damage": 0,
+            "difficulty": 6,
+            "points": 30
+
+        }
+
+    ]
+}
