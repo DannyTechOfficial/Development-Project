@@ -8,6 +8,7 @@ TagManager:
   - Score
   - MissionText
   - MissionTitle
+  - Manager
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,11 @@
+{
+    "config": [
+        {
+            "highscore": 1250,
+            "map" : "Game",
+            "speed" : 10,
+            "health" : 6
+        }
+
+    ]
+}
