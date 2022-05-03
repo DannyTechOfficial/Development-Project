@@ -2,7 +2,7 @@
     "config": [
         {
             "highscore": 1250,
-            "map" : "City",
+            "map" : "Game",
             "speed" : 10,
             "health" : 6
         }

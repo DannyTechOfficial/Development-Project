@@ -28,6 +28,8 @@ public class Frontline_Manager : MonoBehaviour
     public bool TrafficSpawn;
     public bool RoadCloseSpawn;
 
+    private bool Countdown;
+    private int seconds = 0;
     private int missionCount = 1;
     private UnityEngine.UI.Text playerScore;
     private UnityEngine.UI.Text GameOverText;
@@ -139,6 +141,19 @@ public class Frontline_Manager : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Countdown)
+        {
+            MissionTitle.text = missionList.mission[activeMission].name;
+            MissionMessage.text = missionList.mission[activeMission].missionText;
+            seconds += 1;
+        }
+        if (seconds == 800)
+        {
+            Countdown = false;
+            seconds = 0;
+            MissionTitle.text = null;
+            MissionMessage.text = null;
+        }
         if (isDead)
         {
             moveSpeed = 0;
@@ -171,12 +186,6 @@ public class Frontline_Manager : MonoBehaviour
         //moveSpeed += 1.5f;
         if (activeMission < missionList.mission.Length) loadMission(); else {activeMission = 0; loadMission();}
     }
-    IEnumerator inTime(float time)
-    {
-        yield return new WaitForSeconds(time);
-        MissionTitle.text = null;
-        MissionMessage.text = null;
-    }
     public void loadMission()
     {
         Debug.Log("LOADING MISSION !");
@@ -192,112 +201,112 @@ public class Frontline_Manager : MonoBehaviour
                 case 1:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
                     else { Pothole1.SetActive(false); Pothole2.SetActive(false); Pothole3.SetActive(false); }
+                    if (missionList.mission[activeMission].contstruction) { RClosed1.SetActive(true); RClosed2.SetActive(true); RClosed3.SetActive(true); }
+                    else { RClosed1.SetActive(false); RClosed2.SetActive(false); RClosed3.SetActive(false); }
 
                     Mission1.transform.position = new Vector3(-15.61f, 11.92f, -1.0f);
-                    MissionTitle.text = missionList.mission[activeMission].name;
-                    MissionMessage.text = missionList.mission[activeMission].missionText;
-                    StartCoroutine(inTime(8));
+                    Countdown = true;
 
                     break;
                 case 2:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
                     else { Pothole1.SetActive(false); Pothole2.SetActive(false); Pothole3.SetActive(false); }
+                    if (missionList.mission[activeMission].contstruction) { RClosed1.SetActive(true); RClosed2.SetActive(true); RClosed3.SetActive(true); }
+                    else { RClosed1.SetActive(false); RClosed2.SetActive(false); RClosed3.SetActive(false); }
 
                     Mission2.transform.position = new Vector3(15.89f, -7.45f, -1.0f);
-                    MissionTitle.text = missionList.mission[activeMission].name;
-                    MissionMessage.text = missionList.mission[activeMission].missionText;
-                    StartCoroutine(inTime(8));
+                    Countdown = true;
                     break;
                 case 3:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
                     else { Pothole1.SetActive(false); Pothole2.SetActive(false); Pothole3.SetActive(false); }
+                    if (missionList.mission[activeMission].contstruction) { RClosed1.SetActive(true); RClosed2.SetActive(true); RClosed3.SetActive(true); }
+                    else { RClosed1.SetActive(false); RClosed2.SetActive(false); RClosed3.SetActive(false); }
 
                     Mission3.transform.position = new Vector3(15.89f, -7.45f, -1.0f);
-                    MissionTitle.text = missionList.mission[activeMission].name;
-                    MissionMessage.text = missionList.mission[activeMission].missionText;
-                    StartCoroutine(inTime(8));
+                    Countdown = true;
                     break;
                 case 4:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
                     else { Pothole1.SetActive(false); Pothole2.SetActive(false); Pothole3.SetActive(false); }
+                    if (missionList.mission[activeMission].contstruction) { RClosed1.SetActive(true); RClosed2.SetActive(true); RClosed3.SetActive(true); }
+                    else { RClosed1.SetActive(false); RClosed2.SetActive(false); RClosed3.SetActive(false); }
 
                     Mission4.transform.position = new Vector3(0f, 0f, -1.0f);
-                    MissionTitle.text = missionList.mission[activeMission].name;
-                    MissionMessage.text = missionList.mission[activeMission].missionText;
-                    StartCoroutine(inTime(8));
+                    Countdown = true;
                     break;
                 case 5:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
                     else { Pothole1.SetActive(false); Pothole2.SetActive(false); Pothole3.SetActive(false); }
+                    if (missionList.mission[activeMission].contstruction) { RClosed1.SetActive(true); RClosed2.SetActive(true); RClosed3.SetActive(true); }
+                    else { RClosed1.SetActive(false); RClosed2.SetActive(false); RClosed3.SetActive(false); }
 
                     Mission5.transform.position = new Vector3(15.89f, -7.45f, -1.0f);
-                    MissionTitle.text = missionList.mission[activeMission].name;
-                    MissionMessage.text = missionList.mission[activeMission].missionText;
-                    StartCoroutine(inTime(8));
+                    Countdown = true;
                     break;
                 case 6:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
                     else { Pothole1.SetActive(false); Pothole2.SetActive(false); Pothole3.SetActive(false); }
+                    if (missionList.mission[activeMission].contstruction) { RClosed1.SetActive(true); RClosed2.SetActive(true); RClosed3.SetActive(true); }
+                    else { RClosed1.SetActive(false); RClosed2.SetActive(false); RClosed3.SetActive(false); }
 
                     Mission6.transform.position = new Vector3(0f, 0f, -1.0f);
-                    MissionTitle.text = missionList.mission[activeMission].name;
-                    MissionMessage.text = missionList.mission[activeMission].missionText;
-                    StartCoroutine(inTime(8));
+                    Countdown = true;
                     break;
                 case 7:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
                     else { Pothole1.SetActive(false); Pothole2.SetActive(false); Pothole3.SetActive(false); }
+                    if (missionList.mission[activeMission].contstruction) { RClosed1.SetActive(true); RClosed2.SetActive(true); RClosed3.SetActive(true); }
+                    else { RClosed1.SetActive(false); RClosed2.SetActive(false); RClosed3.SetActive(false); }
 
                     Mission1.transform.position = new Vector3(-15.61f, -5.95f, -1.0f);
-                    MissionTitle.text = missionList.mission[activeMission].name;
-                    MissionMessage.text = missionList.mission[activeMission].missionText;
-                    StartCoroutine(inTime(8));
+                    Countdown = true;
 
                     break;
                 case 8:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
                     else { Pothole1.SetActive(false); Pothole2.SetActive(false); Pothole3.SetActive(false); }
+                    if (missionList.mission[activeMission].contstruction) { RClosed1.SetActive(true); RClosed2.SetActive(true); RClosed3.SetActive(true); }
+                    else { RClosed1.SetActive(false); RClosed2.SetActive(false); RClosed3.SetActive(false); }
 
                     Mission2.transform.position = new Vector3(-11.6f, 1.5f, -1.0f);
-                    MissionTitle.text = missionList.mission[activeMission].name;
-                    MissionMessage.text = missionList.mission[activeMission].missionText;
-                    StartCoroutine(inTime(8));
+                    Countdown = true;
                     break;
                 case 9:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
                     else { Pothole1.SetActive(false); Pothole2.SetActive(false); Pothole3.SetActive(false); }
+                    if (missionList.mission[activeMission].contstruction) { RClosed1.SetActive(true); RClosed2.SetActive(true); RClosed3.SetActive(true); }
+                    else { RClosed1.SetActive(false); RClosed2.SetActive(false); RClosed3.SetActive(false); }
 
                     Mission3.transform.position = new Vector3(12.35f, 8.78f, -1.0f);
-                    MissionTitle.text = missionList.mission[activeMission].name;
-                    MissionMessage.text = missionList.mission[activeMission].missionText;
-                    StartCoroutine(inTime(8));
+                    Countdown = true;
                     break;
                 case 10:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
                     else { Pothole1.SetActive(false); Pothole2.SetActive(false); Pothole3.SetActive(false); }
+                    if (missionList.mission[activeMission].contstruction) { RClosed1.SetActive(true); RClosed2.SetActive(true); RClosed3.SetActive(true); }
+                    else { RClosed1.SetActive(false); RClosed2.SetActive(false); RClosed3.SetActive(false); }
 
                     Mission4.transform.position = new Vector3(8.37f, -8.57f, -1.0f);
-                    MissionTitle.text = missionList.mission[activeMission].name;
-                    MissionMessage.text = missionList.mission[activeMission].missionText;
-                    StartCoroutine(inTime(8));
+                    Countdown = true;
                     break;
                 case 11:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
                     else { Pothole1.SetActive(false); Pothole2.SetActive(false); Pothole3.SetActive(false); }
+                    if (missionList.mission[activeMission].contstruction) { RClosed1.SetActive(true); RClosed2.SetActive(true); RClosed3.SetActive(true); }
+                    else { RClosed1.SetActive(false); RClosed2.SetActive(false); RClosed3.SetActive(false); }
 
                     Mission5.transform.position = new Vector3(-0.26f, -2.98f, -1.0f);
-                    MissionTitle.text = missionList.mission[activeMission].name;
-                    MissionMessage.text = missionList.mission[activeMission].missionText;
-                    StartCoroutine(inTime(8));
+                    Countdown = true;
                     break;
                 case 12:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
                     else { Pothole1.SetActive(false); Pothole2.SetActive(false); Pothole3.SetActive(false); }
+                    if (missionList.mission[activeMission].contstruction) { RClosed1.SetActive(true); RClosed2.SetActive(true); RClosed3.SetActive(true); }
+                    else { RClosed1.SetActive(false); RClosed2.SetActive(false); RClosed3.SetActive(false); }
 
                     Mission6.transform.position = new Vector3(15.65f, 4.81f, -1.0f);
-                    MissionTitle.text = missionList.mission[activeMission].name;
-                    MissionMessage.text = missionList.mission[activeMission].missionText;
-                    StartCoroutine(inTime(8));
+                    Countdown = true;
                     break;
             }   
         }
@@ -314,6 +323,7 @@ public class Frontline_Manager : MonoBehaviour
         public int points;
 
         public bool potholes;
+        public bool contstruction;
     }
 
     [System.Serializable]

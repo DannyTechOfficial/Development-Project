@@ -415,7 +415,7 @@ ScriptsOnlyBuild:
     className: Text
   - hash:
       serializedVersion: 2
-      Hash: 67b4dba34c5b9ab469620f3cec07e7c6
+      Hash: c98912b34d935162a393c7f919671785
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Frontline_Manager
