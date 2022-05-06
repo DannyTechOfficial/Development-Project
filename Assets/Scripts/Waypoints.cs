@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Waypoints : MonoBehaviour
 {
+    //Declaring initial variables & references for Waypoints
     [Range(0f, 2f)]
     [SerializeField] private float waypointSize = 1f;
-    private void OnDrawGizmos() 
+    private void OnDrawGizmos() //Draw function only visable in editor
     {
-        foreach(Transform t in transform)
+        //Sets properties for visuals in editor
+        foreach (Transform t in transform) 
             {
                 Gizmos.color = Color.blue;
                 Gizmos.DrawWireSphere(t.position, waypointSize);
@@ -24,7 +26,7 @@ public class Waypoints : MonoBehaviour
         
     }
 
-    public Transform GetNextWaypoint(Transform currentWaypoint)
+    public Transform GetNextWaypoint(Transform currentWaypoint) //Retrieves next waypoint in hierarchy 
     {
         if (currentWaypoint == null)
         {

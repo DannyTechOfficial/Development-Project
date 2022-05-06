@@ -27,11 +27,12 @@ public class WaypointMover : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
+        //Retrieves information for waypoint mover from fmanager.
         multiplierSpeed = fManager.multiplierSpeed;
         transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.position, moveSpeed * multiplierSpeed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, currentWaypoint.position) < distanceThreshold)
+        if (Vector3.Distance(transform.position, currentWaypoint.position) < distanceThreshold) //Gets next waypoint and rotates vehicle based on bool state.
         {
             Debug.Log("Checkpoint 1");
             currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);

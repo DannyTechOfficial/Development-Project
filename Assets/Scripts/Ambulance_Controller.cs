@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Ambulance_Controller : MonoBehaviour
 {
+    //Sets properties & references for Controller
     Rigidbody2D rb2d;
     AudioSource Sound;
     Animator Animate;
@@ -31,6 +32,7 @@ public class Ambulance_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Retrieves fManager & additional components.
         fManager = Manager.GetComponent<Frontline_Manager>();
         rb2d = GetComponent<Rigidbody2D>();
         Sound = GetComponent<AudioSource>();
@@ -40,6 +42,7 @@ public class Ambulance_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Checks for key inputs and outputs controls based on key inputs.
         if (Input.GetKey(KeyCode.RightArrow))
         {
             buttonPressed = RIGHT;
@@ -64,6 +67,7 @@ public class Ambulance_Controller : MonoBehaviour
 
     void FixedUpdate() 
     {
+        // Sets velocities based on buttons pressed and rotates.
         if(buttonPressed == RIGHT)
         {
             rb2d.SetRotation(270);
@@ -85,7 +89,7 @@ public class Ambulance_Controller : MonoBehaviour
             rb2d.velocity = new Vector2(0, -moveSpeed);
             
         }
-
+        //Based on if ambulance was moving or not changes the animation that are active.
         if(rb2d.velocity != new Vector2(0, 0))
         {
             AmbulanceAnimationController.SetBool("Moving", true);
@@ -96,7 +100,7 @@ public class Ambulance_Controller : MonoBehaviour
             AmbulanceAnimationController.SetBool("Moving", false);
             Animate.Play("AmbulanceIdle");
         }
-        
+        //Changes manager states for ambulance.
         if(fManager.Health <= 0)
         {
             fManager.isDead = true;   
@@ -107,22 +111,22 @@ public class Ambulance_Controller : MonoBehaviour
         }
     }
 
-    private void onIdle()
+    private void onIdle() // OnIdle called play audio idle.
     {
         Sound.clip = Idle;
         Sound.Play();
     }
-    private void onMoving()
+    private void onMoving() // OnMoving called play audio moving.
     {
         Sound.clip = Moving;
         Sound.Play();
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other) //Function called when collider is triggered.
     {
         Debug.Log("Collission");
-        if (other.gameObject.tag == "Collidable")
+        if (other.gameObject.tag == "Collidable") // Checks if game object is collidable
         {
-            if ((other.gameObject.GetComponent<Collisions>()).Damage > 0)
+            if ((other.gameObject.GetComponent<Collisions>()).Damage > 0) //Checks damage is above 0
             {
                 fManager.Health -= (other.gameObject.GetComponent<Collisions>().Damage);
                 onPlayerHit?.Invoke();
@@ -132,7 +136,7 @@ public class Ambulance_Controller : MonoBehaviour
                     fManager.isDead = true;
                 }
             }
-            else if((other.gameObject.GetComponent<Collisions>()).checkpoint && (other.gameObject.GetComponent<Collisions>()).collectable)
+            else if((other.gameObject.GetComponent<Collisions>()).checkpoint && (other.gameObject.GetComponent<Collisions>()).collectable) //If collectable and checkpoint then runs reachedmission called on fManager
             {
                 fManager.reachedMission(other);
             }

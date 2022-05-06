@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Collisions : MonoBehaviour
 {
+    //Class template for collidable objects.
     public int Damage, Durability, Time, points;
     public bool collectable, checkpoint;
     // Start is called before the first frame update

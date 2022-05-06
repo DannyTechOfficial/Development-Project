@@ -12,6 +12,7 @@ using System;
 
 public class Frontline_Manager : MonoBehaviour
 {
+    //Sets properties & references for Manager
     public GameObject frontline_Manager;
     //Blank references to Missions & Config
     public MissionList missionList = new MissionList();
@@ -20,6 +21,7 @@ public class Frontline_Manager : MonoBehaviour
     public GameObject playerScoreObject, GameOverObject, MissionTitleObject, MissionTextObject;
     public float moveSpeed, multiplierSpeed, maxScore;
 
+    //Various variables for different objects and features.
     public int Health, maxHealth;
     public bool isDead;
     public int Difficulty;
@@ -44,15 +46,15 @@ public class Frontline_Manager : MonoBehaviour
     FileInfo[] allFiles;
     DirectoryInfo directoryInfo;
     public GameObject Mission1, Mission2, Mission3, Mission4, Mission5, Mission6, Pothole1, Pothole2, Pothole3, RClosed1, RClosed2, RClosed3;
-    //public Collisions C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12; 
         
     // Start is called before the first frame update
     void Start()
     {
+        //Loads configuation files based on active scene.
         directoryInfo = new DirectoryInfo(Application.streamingAssetsPath);
         print("Streaming Assets Path: " + Application.streamingAssetsPath);
         allFiles = directoryInfo.GetFiles("*.*");
-        if (SceneManager.GetActiveScene().name == "Start Menu")
+        if (SceneManager.GetActiveScene().name == "Start Menu") //Loads config json if scene is Start Menu
         {
             foreach (FileInfo file in allFiles)
             {
@@ -69,7 +71,7 @@ public class Frontline_Manager : MonoBehaviour
             }
 
         }
-        else
+        else //Loads both json files if scene is anything else.
         {
             foreach (FileInfo file in allFiles)
             {
@@ -92,6 +94,7 @@ public class Frontline_Manager : MonoBehaviour
                     Debug.Log(configList.config[0]);
                 }
             }
+            //Sets values based on data in json files.
             maxHealth = configList.config[0].health;
             Health = maxHealth;
             moveSpeed = configList.config[0].speed;
@@ -106,23 +109,7 @@ public class Frontline_Manager : MonoBehaviour
 
             missionCount = (missionList.mission.Length);
 
-            loadMission();
-            /*
-            C1 = Mission1.GetComponent<Collisions>();
-            C2 = Mission2.GetComponent<Collisions>();;
-            C3 = Mission3.GetComponent<Collisions>();;
-            C4 = Mission4.GetComponent<Collisions>();;
-            C5 = Mission5.GetComponent<Collisions>();;
-            C6 = Mission6.GetComponent<Collisions>();
-
-            C7 = Pothole1.GetComponent<Collisions>();
-            C8 = Pothole2.GetComponent<Collisions>();
-            C9 = Pothole3.GetComponent<Collisions>();
-            C10 = RClosed1.GetComponent<Collisions>();
-            C11 = RClosed2.GetComponent<Collisions>();
-            C12 = RClosed3.GetComponent<Collisions>();
-            */
-
+            loadMission(); //Starts mission loading.
 
         }
     }
@@ -130,36 +117,39 @@ public class Frontline_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Updates every frame PController variables with manager variables.
         PController.moveSpeed = moveSpeed;
         PController.health = Health;
         PController.dead = isDead;
-        if (Convert.ToInt32(playerScore.text) >= maxScore)
+        if (Convert.ToInt32(playerScore.text) >= maxScore) //Checks for max score is reached.
         {
             GameOverText.text = "Your reached the Max Score !   -   Well Done ! !";
         }
     }
 
-    void FixedUpdate()
+    void FixedUpdate() //Updates Once a second
     {
-        if (Countdown)
+        if (Countdown) //If countdown is true
         {
+            //Displays mission text
             MissionTitle.text = missionList.mission[activeMission].name;
             MissionMessage.text = missionList.mission[activeMission].missionText;
+            //Adds 1 to counter
             seconds += 1;
         }
-        if (seconds == 800)
+        if (seconds == 800) //If counter reaches 800 then clear mission text and reset.
         {
             Countdown = false;
             seconds = 0;
             MissionTitle.text = null;
             MissionMessage.text = null;
         }
-        if (isDead)
+        if (isDead) //If player marked as dead.
         {
             moveSpeed = 0;
             GameOverText.text = "You Crashed The Ambulance ! - Press ESC to go to menu.";
         }
-        if (SceneManager.GetActiveScene().name == "Start Menu")
+        if (SceneManager.GetActiveScene().name == "Start Menu") //Refreshes config data every second so player can update file in-game.
         {
             foreach (FileInfo file in allFiles)
             {
@@ -176,8 +166,9 @@ public class Frontline_Manager : MonoBehaviour
         }
     }
 
-    public void reachedMission(Collider2D other)
+    public void reachedMission(Collider2D other) //If mission is reached
     {
+        //moves previous mission, sets properties of next mission and starts to load.
         other.gameObject.transform.Translate(0.0f, 50.0f, 0.0f);
         intPlayerScore += other.gameObject.GetComponent<Collisions>().points;
         playerScore.text = Convert.ToString(intPlayerScore);
@@ -186,17 +177,17 @@ public class Frontline_Manager : MonoBehaviour
         //moveSpeed += 1.5f;
         if (activeMission < missionList.mission.Length) loadMission(); else {activeMission = 0; loadMission();}
     }
-    public void loadMission()
+    public void loadMission() //On loading mission/
     {
         Debug.Log("LOADING MISSION !");
-        randomNumber = Random.Range(1,13);
+        randomNumber = Random.Range(1,13); //Decides on random location for mission.
 
-        multiplierSpeed =  missionList.mission[activeMission].difficulty;
+        multiplierSpeed =  missionList.mission[activeMission].difficulty; //Retrieves mission difficulty and changes multiplier for traffic speed.
 
-        if(int.Parse(playerScore.text) < maxScore)
+        if(int.Parse(playerScore.text) < maxScore) //If max score isn't reacehed.
         {
             
-            switch (randomNumber)
+            switch (randomNumber) //Loads random location and sets mission based on next one in configuation list.
             {
                 case 1:
                     if (missionList.mission[activeMission].potholes) { Pothole1.SetActive(true); Pothole2.SetActive(true); Pothole3.SetActive(true); }
@@ -313,7 +304,7 @@ public class Frontline_Manager : MonoBehaviour
     }
 
     [System.Serializable]
-    public class Mission
+    public class Mission //Class template for Mission
     {
         public string name;
         public string missionText;
@@ -327,13 +318,13 @@ public class Frontline_Manager : MonoBehaviour
     }
 
     [System.Serializable]
-    public class MissionList
+    public class MissionList //Class template for Mission List
     {
         public Mission[] mission;
     }
 
     [System.Serializable]
-    public class Config
+    public class Config //Class template for config
     {
         public float highscore;
         public string map;
@@ -342,7 +333,7 @@ public class Frontline_Manager : MonoBehaviour
     }
 
     [System.Serializable]
-    public class ConfigList
+    public class ConfigList //Class template for config list.
     {
         public Config[] config;
     }

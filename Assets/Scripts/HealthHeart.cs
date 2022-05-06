@@ -5,32 +5,33 @@ using UnityEngine.UI;
 
 public class HealthHeart : MonoBehaviour
 {
+    //Declaring initial variables & references for health heart
     public Sprite fullHeart, halfHeart, EmptyHeart;
-    Image hearImage;
+    Image heartImage;
 
-    private void Awake() 
+    private void Awake()  //On Awake retrieves component image
     {
-        hearImage = GetComponent<Image>();    
+        heartImage = GetComponent<Image>();    
     }
 
-    public void SetHeartImage(HearStatus status)
+    public void SetHeartImage(HeartStatus status) //Sets heart image based on status
     {
         switch(status)
         {
-            case HearStatus.Empty:
-                hearImage.sprite = EmptyHeart;
+            case HeartStatus.Empty:
+                heartImage.sprite = EmptyHeart;
                 break;
-            case HearStatus.Half:
-                hearImage.sprite = halfHeart;
+            case HeartStatus.Half:
+                heartImage.sprite = halfHeart;
                 break;
-            case HearStatus.Full:
-                hearImage.sprite = fullHeart;
+            case HeartStatus.Full:
+                heartImage.sprite = fullHeart;
                 break;
         }
     }
 }
 
-public enum HearStatus
+public enum HeartStatus //Enum for heart status
 {
     Empty = 0,
     Half = 1,
