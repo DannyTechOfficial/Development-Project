@@ -1,37 +1,7 @@
-## Welcome to GitHub Pages
+## Welcome to Frontline
 
-You can use the [editor on GitHub](https://github.com/DannyTechOfficial/Development-Project/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+Here you will be able to check out some of the awesome updates in detail, explaining whats been added, whats in the works as well as bugs in the project. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Coming Soon
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/DannyTechOfficial/Development-Project/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Frontline was the foundation to something that I think you will really enjoy. I've taken down notes, and I have started a rework on it with Project Unreal. Follow all the latest details on the project at www.unreal.dannytech.uk
